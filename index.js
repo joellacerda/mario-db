@@ -2,11 +2,15 @@ const express = require("express");
 const { Sequelize } = require("sequelize");
 
 const app = express();
-const port = 3000;
+const port = 5432;
+const db_name = `${process.env.DB_NAME}`;
+const db_user = `${process.env.DB_USER}`;
+const db_pw = `${process.env.DB_PW}`;
+const db_host = `${process.env.DB_HOST}`;
 
 // Set up connection to local PostgreSQL database
-const sequelize = new Sequelize("database", "username", "password", {
-  host: "localhost",
+const sequelize = new Sequelize(db_name, db_user, db_pw, {
+  host: db_host,
   dialect: "postgres",
 });
 
